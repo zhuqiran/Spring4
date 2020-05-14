@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--配置该xml的约束文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!--定义动态工厂Bean-->
+    <bean id="dynamicFactory" class="com.factories.ServiceFactory"/>
+
+    <!--通过上面的动态工厂产生ServiceBean，即通动态工厂的**方法产生需要的ServiceBean-->
+    <bean id="serviceOfISomeService" factory-bean="dynamicFactory" factory-method="getSomeService"/>
+
+
+    <!--===================================静态工厂Bean,装配Bean=======================================-->
+    <!--由于静态工厂Bean不需要实例化，所以不需要为静态工厂Bean配置bean标签-->
+    <bean id="myService" class="com.factories.StaticServiceFactory" factory-method="getSomeService"/>
+</beans>

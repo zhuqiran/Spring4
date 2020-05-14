@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="ApplicationContext" removed="false">
+          <file>file://$MODULE_DIR$/src/applicationContext.xml</file>
+        </fileset>
+        <fileset id="fileset2" name="ApplicationContext (2)" removed="false">
+          <file>file://$MODULE_DIR$/src/com/di/instance01/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/src/com/di/instance02/applicationContext.xml</file>
+        </fileset>
+        <fileset id="fileset3" name="ApplicationContext (3)" removed="false">
+          <file>file://$MODULE_DIR$/src/com/di/instance03/applicationContext.xml</file>
+        </fileset>
+        <fileset id="fileset4" name="ApplicationContext (4)" removed="false">
+          <file>file://$MODULE_DIR$/src/com/di/instance04/applicationContext.xml</file>
+        </fileset>
+        <fileset id="fileset5" name="ApplicationContext (5)" removed="false">
+          <file>file://$MODULE_DIR$/src/com/di/instance05/applicationContext.xml</file>
+        </fileset>
+        <fileset id="fileset6" name="ApplicationContext (6)" removed="false">
+          <file>file://$MODULE_DIR$/src/com/di/instance06/applicationContext.xml</file>
+        </fileset>
+        <fileset id="fileset7" name="ApplicationContext (7)" removed="false">
+          <file>file://$MODULE_DIR$/src/com/di/instance07/applicationContext.xml</file>
+        </fileset>
+        <fileset id="fileset8" name="ApplicationContext (8)" removed="false">
+          <file>file://$MODULE_DIR$/src/com/di/instance08/applicationContext.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
+      </library>
+    </orderEntry>
+  </component>
+</module>

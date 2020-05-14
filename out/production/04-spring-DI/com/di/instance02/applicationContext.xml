@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--配置该xml的约束文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--构造器注入，以带参构造器注入的方式，为Bean实例的成员变量赋值。
+    instance02-->
+    <bean id="school" class="com.di.instance02.School">
+        <property name="schoolName" value="北京大学"/>
+    </bean>
+
+    <!--构造器注入-->
+    <bean id="student" class="com.di.instance02.Student">
+        <!--
+        <constructor-arg index="0" value="lisi"/>
+        <constructor-arg index="1" value="24"/>
+        <constructor-arg index="2" ref="school"/>-->
+        <!--推荐以这种方式赋值-->
+        <constructor-arg name="name" value="lisi"/>
+        <constructor-arg name="age" value="24"/>
+        <!--域属性注入，使用ref引用属性值-->
+        <constructor-arg name="school" ref="school"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--配置该xml的约束文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!--异类抽象Bean：用于解决Bean定义时，冗余配置问题-->
+    <bean id="baseBean" abstract="true">
+        <property name="university" value="清华大学"/>
+        <property name="department" value="计算机系"/>
+    </bean>
+
+    <bean id="teacher" class="com.di.instance08.Teacher" parent="baseBean">
+        <property name="pname" value="王杰"/>
+        <property name="workYears" value="18"/>
+    </bean>
+
+    <bean id="student" class="com.di.instance08.Student" parent="baseBean">
+        <property name="name" value="张三"/>
+        <property name="age" value="23"/>
+    </bean>
+</beans>

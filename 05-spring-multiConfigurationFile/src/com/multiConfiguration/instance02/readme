@@ -1,0 +1,8 @@
+为应用配置多个Spring配置文件：
+
+
+以配置文件组的方式实现（多配置文件同级），定义的多个spring配置文件级别一致，通过可变参数的方式传递给ClassPathXmlApplicationContext类
+完成ApplicationContext容器的初始化
+
+
+

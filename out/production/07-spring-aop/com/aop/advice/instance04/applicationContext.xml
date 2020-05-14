@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--配置该xml的约束文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!--配置目标对象的Bean-->
+    <bean id="login" class="com.aop.advice.instance04.LoginServiceImpl"/>
+    <!--注册通知切面，即通知对象Bean：环绕通知方法-->
+    <bean id="loginAdvice" class="com.aop.advice.instance04.MyThrowsAdvice"/>
+
+    <!--配置代理-->
+    <!--代理工厂类Bean对象ProxyFactoryBean，由该工厂根据目标对象Bean和通知对象Bean返回增强后的目标Bean-->
+    <bean id="loginProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!--为代理配置目标对象-->
+        <property name="target" ref="login"/>
+        <!--配置切面对象-->
+        <property name="interceptorNames" value="loginAdvice"/>
+    </bean>
+</beans>

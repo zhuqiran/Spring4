@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="off">
+    <Appenders>
+        <!--将日志写入文件中-->
+        <File name="logFile" fileName="log/test.log" append="true">
+            <!--日志内容的格式-->
+            <PatternLayout pattern="[%-5p][%d{yyyy-MM-dd HH:mm:ss}][%c %L] %m%n" />
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <!--
+        设置日志记录的等级：
+        记录指定输出等级及以上等级的日志内容。
+
+        若指定level的值为：off则表示不再输出日志信息
+        -->
+        <Root level="debug">
+            <AppenderRef ref="logFile" />
+        </Root>
+    </Loggers>
+
+</Configuration>

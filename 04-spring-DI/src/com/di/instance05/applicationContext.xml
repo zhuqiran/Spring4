@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--配置该xml的约束文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!--使用SPEL对Bean属性进行注入。
+        1）在SPEL可以直接调用静态方法，并获取其返回值
+        2）通过SPEL可以访问Bean对象的属性值和对象方法，并计算返回值。
+    -->
+
+    <bean id="student1" class="com.di.instance05.Student">
+        <property name="name" value="张三"/>
+        <!--通过SPEL调用静态方法，并获取返回值-->
+        <property name="age" value="#{T(java.lang.Math).random() * 50}"/>
+    </bean>
+
+    <bean id="student2" class="com.di.instance05.Student">
+        <!--通过SPEL获取指定Bean对象的属性值。需要注意的是，此时该Bean必须具备getter方法-->
+        <property name="name" value="#{student1.name}"/>
+        <!--在SPEL中进行条件判断-->
+        <!--<property name="age" value="#{student1.age > 25 ? 25 : student1.age}"/>-->
+        <!--通过SPEL调用Bean对象的方法-->
+        <property name="age" value="#{student1.computeAge()}"/>
+    </bean>
+
+
+
+
+</beans>

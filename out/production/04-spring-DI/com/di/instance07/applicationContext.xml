@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--配置该xml的约束文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!--抽象同类Bean。abstract属性为true时，此Bean不能被创建对象，即不能被获取-->
+    <bean id="baseBean" class="com.di.instance07.Student" abstract="true">
+        <property name="university" value="清华大学"/>
+        <property name="department" value="计算机系"/>
+    </bean>
+
+    <!--通过parent属性，完成对Bean的继承-->
+    <bean id="student1" class="com.di.instance07.Student" parent="baseBean">
+        <property name="name" value="张三"/>
+        <property name="age" value="23"/>
+        <!--冗余代码，通过同类抽象Bean解决-->
+        <!-- <property name="university" value="清华大学"/>
+        <property name="department" value="计算机系"/>-->
+    </bean>
+
+    <bean id="student2" class="com.di.instance07.Student" parent="baseBean">
+        <property name="name" value="李四"/>
+        <property name="age" value="24"/>
+        <!--冗余代码，通过同类抽象Bean解决-->
+        <!--<property name="university" value="清华大学"/>
+        <property name="department" value="计算机系"/>-->
+    </bean>
+</beans>

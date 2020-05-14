@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--配置该xml的约束文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!--设值注入，以设值注入的方式了，为Bean实例的属性赋值。本质上是通过Bean实例的setter方法完成的。-->
+    <!--Bean的域属性的自动注入，自动注入有两种方式：1）byName，2）byType-->
+
+    <bean id="school" class="com.di.instance04.School">
+        <property name="schoolName" value="清华大学"/>
+    </bean>
+
+    <!--添加autowire属性，并设置属性值为byName。即容器会根据Bean的域属性名自动从Beans中查找id相同的Bean对象，注入给Bean的域属性-->
+    <!--<bean id="student" class="com.di.instance04.Student" autowire="byName">
+        <property name="name" value="张三"/>
+        <property name="age" value="23"/>
+    </bean>-->
+
+    <!--添加autowire属性，并设置属性值为byType。即容器会根据Bean的域属性类型从Beans中查找类型相同（包括子类对象）的Bean对象，注入给Bean的域属性-->
+    <!--通过byType方式完成自动注入时需要注意：容器内与需要注入域属性类型相同的Bean对象必须要唯一，否则会报错-->
+    <bean id="student" class="com.di.instance04.Student" autowire="byType">
+        <property name="name" value="李四"/>
+        <property name="age" value="23"/>
+    </bean>
+
+
+</beans>

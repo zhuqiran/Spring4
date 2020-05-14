@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--配置该xml的约束文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--主要导入路径，classpath：-->
+    <!--<import resource="classpath:com/multiConfiguration/instance02/spring-base.xml"/>
+    <import resource="classpath:com/multiConfiguration/instance02/spring-beans.xml"/>-->
+
+    <!--以通配符的方式导入-->
+    <import resource="classpath:com/multiConfiguration/instance02/spring-*.xml"/>
+
+
+</beans>

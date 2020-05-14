@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/01-spring-primary/01-spring-primary.iml" filepath="$PROJECT_DIR$/01-spring-primary/01-spring-primary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02-spring-beansAssemble/02-spring-beansAssemble.iml" filepath="$PROJECT_DIR$/02-spring-beansAssemble/02-spring-beansAssemble.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03-spring-beanPostProcessor/03-spring-beanPostProcessor.iml" filepath="$PROJECT_DIR$/03-spring-beanPostProcessor/03-spring-beanPostProcessor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04-spring-DI/04-spring-DI.iml" filepath="$PROJECT_DIR$/04-spring-DI/04-spring-DI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05-spring-multiConfigurationFile/05-spring-multiConfigurationFile.iml" filepath="$PROJECT_DIR$/05-spring-multiConfigurationFile/05-spring-multiConfigurationFile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06-spring-DIByAnnotation/06-spring-DIByAnnotation.iml" filepath="$PROJECT_DIR$/06-spring-DIByAnnotation/06-spring-DIByAnnotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07-spring-aop/07-spring-aop.iml" filepath="$PROJECT_DIR$/07-spring-aop/07-spring-aop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08-aop-aspectJ/08-aop-aspectJ.iml" filepath="$PROJECT_DIR$/08-aop-aspectJ/08-aop-aspectJ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/09-spring-dao-JdbcTemplate/09-spring-dao-JdbcTemplate.iml" filepath="$PROJECT_DIR$/09-spring-dao-JdbcTemplate/09-spring-dao-JdbcTemplate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10-spring-transactional/10-spring-transactional.iml" filepath="$PROJECT_DIR$/10-spring-transactional/10-spring-transactional.iml" />
+      <module fileurl="file://$PROJECT_DIR$/11-spring-transactional-annotation/11-spring-transactional-annotation.iml" filepath="$PROJECT_DIR$/11-spring-transactional-annotation/11-spring-transactional-annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/12-spring-transactional-aspectJ/12-spring-transactional-aspectJ.iml" filepath="$PROJECT_DIR$/12-spring-transactional-aspectJ/12-spring-transactional-aspectJ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/13-spring-mybatis/13-spring-mybatis.iml" filepath="$PROJECT_DIR$/13-spring-mybatis/13-spring-mybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/14-spring-mybatis-2/14-spring-mybatis-2.iml" filepath="$PROJECT_DIR$/14-spring-mybatis-2/14-spring-mybatis-2.iml" />
+    </modules>
+  </component>
+</project>

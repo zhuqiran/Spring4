@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--配置该xml的约束文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+   <!-- <bean id="someService" class="com.aop.proxycreator.instance01.SomeServiceImpl"/>
+    <bean id="someService2" class="com.aop.proxycreator.instance01.SomeServiceImpl"/>
+
+
+    <bean id="beforeAdvice" class="com.aop.proxycreator.instance01.MyMethodBeforeAdvice"/>
+
+    <bean id="beforeAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice" ref="beforeAdvice"/>
+        <property name="patterns" value=".*doFirst|.*doSecond"/>
+    </bean>
+
+    <bean id="someServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="someService"/>
+        <property name="interceptorNames" value="beforeAdvisor"/>
+    </bean>
+    <bean id="someServiceProxy2" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="someService2"/>
+        <property name="interceptorNames" value="beforeAdvisor"/>
+    </bean>-->
+
+    <!--
+
+    上述方法存在的问题：
+        1. 当获取多个目标对象时，就需要配置多个ProxyFactoryBean来创建多个代理对象，这样会使配置变得臃肿不好管理
+        2. 用户真正想调用的是目标对象，而真正调用的确实代理生成的对象，这不符合正常的逻辑
+        以上两个问题，均是因为ProxyFactoryBean类的功能太过简单造成的。
+    -->
+
+    <!--使用顾问自动代理生成器解决此问题-->
+    <bean id="someService" class="com.aop.proxycreator.instance01.SomeServiceImpl"/>
+    <bean id="someService2" class="com.aop.proxycreator.instance01.SomeServiceImpl"/>
+
+    <!--配置通知Bean-->
+    <bean id="beforeAdvice" class="com.aop.proxycreator.instance01.MyMethodBeforeAdvice"/>
+    <!--配置顾问Bean-->
+    <bean id="beforeAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+        <property name="advice" ref="beforeAdvice"/>
+        <property name="mappedName" value="doFirst"/>
+    </bean>
+
+    <!--使用默认顾问自动代理生成器-->
+    <!--<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>-->
+
+    <!--
+    因为该代理生成器，实现的Bean后处理器接口，所以在其他Bean创建完成后，自动的为其代理增强
+    DefaultAdvisorAutoProxyCreator存在三个问题：
+    1. 不能选择增强的目标对象
+    2. 不能选择切面，只能是advisor切面
+    3. 不能选择advisor，所有的advisor都被作为切面织入到了目标方法
+
+    如何解决上述问题：
+        使用Bean名称自动代理生成器:BeanNameAutoProxyCreator
+    -->
+
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <!--<property name="interceptorNames" value="beforeAdvice"/>-->
+        <property name="interceptorNames" value="beforeAdvisor"/>
+        <property name="beanNames" value="someService"/>
+
+    </bean>
+
+
+</beans>

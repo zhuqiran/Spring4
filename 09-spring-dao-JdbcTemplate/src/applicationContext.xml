@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> <!-- bean definitions here -->
+
+    <!--配置数据库连接池-->
+    <!--spring默认连接池-->
+   <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC"/>
+        <property name="username" value="root"/>
+        <property name="password" value="zhuqiran"/>
+    </bean>-->
+
+    <!--c3p0连接池-->
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC"/>
+        <property name="user" value="root"/>
+        <property name="password" value="zhuqiran"/>
+    </bean>-->
+
+    <!--dbcp数据库连接池-->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC"/>
+        <property name="username" value="root"/>
+        <property name="password" value="zhuqiran"/>
+    </bean>
+
+    <!--直接将数据源注入到dao层对象，不需要间接借助JdbcTemplate来设置数据源了。具体参考JdbcDaoSupport的setDataSource()方法的源码-->
+    <bean id="studentDao" class="com.csust.template.dao.StudentDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        &lt;!&ndash;配置数据源属性值&ndash;&gt;
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    &lt;!&ndash;配置dao对象&ndash;&gt;
+    <bean id="studentDao" class="com.csust.template.dao.StudentDao">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>-->
+
+
+    <!--配置service对象-->
+    <bean id="studentService" class="com.csust.template.service.StudentService">
+        <property name="studentDao" ref="studentDao"/>
+    </bean>
+</beans>

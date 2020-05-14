@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--=======================================IOC的配置==================================================-->
+    <!--配置数据量连接池-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC"/>
+        <property name="user" value="root"/>
+        <property name="password" value="zhuqiran"/>
+    </bean>
+
+    <!--配置Dao对象-->
+    <bean id="accountDao" class="com.csust.transactional.dao.AccountDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="stockDao" class="com.csust.transactional.dao.StockDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--配置Service对象-->
+    <bean id="buyService" class="com.csust.transactional.service.BuyStockService">
+        <property name="accountDao" ref="accountDao"/>
+        <property name="stockDao" ref="stockDao"/>
+    </bean>
+
+    <!--=======================================AOP的配置==================================================-->
+    <!--使用AspectJ的AOP配置管理事务-->
+    <!--配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--配置事务通知：为事务通知设置相关属性，指定要将事务以什么样的方式织入给那些方法-->
+    <tx:advice transaction-manager="transactionManager" id="advice">
+        <tx:attributes>
+            <tx:method name="create*" isolation="DEFAULT" propagation="REQUIRED"/>
+            <tx:method name="buyStock" isolation="DEFAULT" propagation="REQUIRED" rollback-for="BuyStockException"/>
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <!--配置切入点，即将通知织入到那个方法中-->
+        <aop:pointcut id="pointCut" expression="execution(* *..service.*.*(..))"/>
+        <aop:advisor advice-ref="advice" pointcut-ref="pointCut"/>
+    </aop:config>
+
+
+</beans>

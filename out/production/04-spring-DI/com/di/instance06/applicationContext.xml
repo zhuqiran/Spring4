@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--配置该xml的约束文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!--内部Bean注入-->
+    <bean id="student" class="com.di.instance06.Student">
+        <property name="name" value="张三"/>
+        <property name="age" value="23"/>
+        <property name="school">
+            <!--定义内部Bean完成对shool域属性的注入。内部Bean只能被当前Bean使用-->
+            <bean class="com.di.instance06.School">
+                <property name="schoolName" value="清华大学"/>
+            </bean>
+        </property>
+    </bean>
+</beans>

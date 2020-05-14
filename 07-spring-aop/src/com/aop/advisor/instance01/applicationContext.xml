@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--配置该xml的约束文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--配置目标对象-->
+    <bean id="someService" class="com.aop.advisor.instance01.SomeServiceImpl"/>
+    <!--配置切面-->
+    <bean id="beforeAdvice" class="com.aop.advisor.instance01.MyMethodBeforeAdvice"/>
+    <bean id="afterAdvice" class="com.aop.advisor.instance01.MyAfterReturningAdvice"/>
+
+    <!--配置顾问-->
+    <bean id="doFirstAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+        <property name="advice" ref="beforeAdvice"/>
+        <property name="mappedName" value="doFirst"/>
+    </bean>
+    <bean id="doSecondAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+        <property name="advice" ref="afterAdvice"/>
+        <property name="mappedName" value="doSecond"/>
+    </bean>
+
+    <!--配置代理类-->
+    <bean id="someServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="someService"/>
+        <property name="interceptorNames" value="doFirstAdvisor,doSecondAdvisor"/>
+    </bean>
+
+</beans>

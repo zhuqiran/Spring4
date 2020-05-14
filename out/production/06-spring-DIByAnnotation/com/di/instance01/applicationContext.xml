@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--以注解的方式装配Bean时，Bean无须在配置文件中定义，但是需要添加配置文件的约束和配置组件扫描器-->
+
+    <!--配置组件扫描器，从指定的包中扫描组件-->
+    <!--从com.di.instance01包及其子包中扫描-->
+    <context:component-scan base-package="com.di.instance01"/>
+
+    <!--
+    基于注解的DI
+    1）首先将Bean使用@Component注解注册成组件。
+    2）在容器中定义组件扫描器，通过<context:component-scan base-package="..."/>，从指定包中扫描组件。
+    3）注解的实现需要依赖spring的aop模块，所以需要倒入aop模块的jar包。
+    -->
+</beans>

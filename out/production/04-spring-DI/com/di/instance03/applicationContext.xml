@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--配置该xml的约束文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--为集合属性注入属性值，属于设置注入类型-->
+    <bean id="mySchool1" class="com.di.instance03.School">
+        <property name="schoolName" value="北京大学"/>
+    </bean>
+    <bean id="mySchool2" class="com.di.instance03.School">
+        <property name="schoolName" value="清华大学"/>
+    </bean>
+
+    <bean id="someCollection" class="com.di.instance03.SomeCollection">
+        <property name="schools">
+            <array>
+                <ref bean="mySchool1"/>
+                <ref bean="mySchool2"/>
+            </array>
+        </property>
+
+        <!--<property name="names">
+            <array>
+                <value>张三</value>
+                <value>李四</value>
+            </array>
+        </property>
+
+        <property name="list">
+            <list>
+                <value>北京</value>
+                <value>上海</value>
+            </list>
+        </property>
+
+        <property name="set">
+            &lt;!&ndash;复习：set相对于list集合，集合内容具有唯一性&ndash;&gt;
+            <set>
+                <value>河南</value>
+                <value>安徽</value>
+            </set>
+        </property>-->
+
+        <!--对于非引用型内容，数组、列表、集合有比较简便的注入方式-->
+        <property name="names" value="张三,李四"/>
+        <property name="list" value="北京,上海"/>
+        <property name="set" value="河南,安徽"/>
+
+        <property name="map">
+            <map>
+                <entry key="mobile" value="123719239"/>
+                <entry key="QQ" value="1389123818"/>
+            </map>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="location">北京</prop>
+                <prop key="number">1239182</prop>
+            </props>
+        </property>
+    </bean>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</beans>

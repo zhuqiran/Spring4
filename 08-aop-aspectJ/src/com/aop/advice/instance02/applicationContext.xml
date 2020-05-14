@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!--注册切面-->
+    <bean id="myAspect" class="com.aop.advice.instance02.MyAspect"/>
+    <!--配置目标对象-->
+    <bean id="someService" class="com.aop.advice.instance02.SomeServiceImpl"/>
+
+    <!--通过xml的方式配置切入点和通知方法-->
+    <aop:config>
+        <!--定义切入点-->
+        <aop:pointcut id="doFirst" expression="execution(* *..ISomeService.doFirst(..))"/>
+        <aop:pointcut id="doSecond" expression="execution(* *..ISomeService.doSecond(..))"/>
+        <aop:pointcut id="doThird" expression="execution(* *..ISomeService.doThird(..))"/>
+        <aop:aspect ref="myAspect" id="myAspect">
+            <!--前置通知-->
+            <!--不带参数的-->
+            <aop:before method="beforeAdvice" pointcut-ref="doFirst"/>
+            <!--带参数的-->
+            <aop:before method="beforeAdvice(org.aspectj.lang.JoinPoint)" pointcut-ref="doFirst"/>
+            <!--后置通知-->
+            <aop:after-returning method="afterAdvice" pointcut-ref="doSecond"/>
+            <aop:after-returning method="afteAdvice(java.lang.Object)" pointcut-ref="doSecond" returning="result"/>
+            <!--环绕通知-->
+            <aop:around method="aroundAdvice(org.aspectj.lang.ProceedingJoinPoint)" pointcut-ref="doSecond"/>
+
+            <!--异常通知方法-->
+            <aop:after-throwing method="exceptionAdvice" pointcut-ref="doThird" throwing="ex"/>
+
+            <!--最终通知-->
+            <aop:after method="finallyAdvice" pointcut-ref="doThird"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

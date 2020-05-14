@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--配置该xml的约束文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--配置目标对象-->
+    <bean id="someService" class="com.aop.advice.instance05.SomeServiceImpl"/>
+
+    <!--配置切面对象-->
+    <bean id="beforeAdvice" class="com.aop.advice.instance05.MyMethodBeforeAdvice"/>
+    <bean id="afterAdvice" class="com.aop.advice.instance05.MyAfterReturningAdvice"/>
+
+    <!--配置代理，该代理会将切面织入到目标对象的方法中-->
+    <bean id="someServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!--配置目标对象-->
+        <property name="target" ref="someService"/>
+        <!--配置要织入的切面:配置多个切面-->
+        <!--<property name="interceptorNames">
+            <array>
+                <value>beforeAdvice</value>
+                <value>afterAdvice</value>
+            </array>
+        </property>-->
+        <!--配置多切面的简单方式-->
+        <property name="interceptorNames" value="beforeAdvice,afterAdvice"/>
+    </bean>
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--配置该xml的约束文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!--设值注入，以设值注入的方式了，为Bean实例的属性赋值。本质上是通过Bean实例的setter方法完成的。-->
+    <bean id="school" class="com.di.instance01.School">
+        <property name="schoolName" value="清华大学"/>
+    </bean>
+
+    <bean id="student" class="com.di.Student">
+        <!--指定属性值-->
+        <property name="name" value="张三"/>
+        <property name="age" value="23"/>
+        <property name="school" ref="school"/>
+    </bean>
+
+</beans>
