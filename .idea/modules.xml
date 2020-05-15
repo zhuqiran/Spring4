@@ -17,6 +17,7 @@
       <module fileurl="file://$PROJECT_DIR$/13-spring-mybatis/13-spring-mybatis.iml" filepath="$PROJECT_DIR$/13-spring-mybatis/13-spring-mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/14-spring-mybatis-2/14-spring-mybatis-2.iml" filepath="$PROJECT_DIR$/14-spring-mybatis-2/14-spring-mybatis-2.iml" />
       <module fileurl="file://$PROJECT_DIR$/15-spring-web/15-spring-web.iml" filepath="$PROJECT_DIR$/15-spring-web/15-spring-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/16-spring-web-2/16-spring-web-2.iml" filepath="$PROJECT_DIR$/16-spring-web-2/16-spring-web-2.iml" />
     </modules>
   </component>
 </project>

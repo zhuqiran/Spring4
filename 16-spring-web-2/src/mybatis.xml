@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <!--起别名，即实体的简单类名作为实体的别名-->
+        <package name="com.csust.web.entity"/>
+    </typeAliases>
+    <!--这部分信息，在Spring配置文件中配置即可。-->
+    <!--<environments default="">
+        <environment id="">
+            <transactionManager type=""></transactionManager>
+            <dataSource type=""></dataSource>
+        </environment>
+    </environments>-->
+    <!--指定映射文件的位置-->
+    <mappers>
+        <!--当mapper映射的文件名和接口的名称一致时，可以使用package标签指定映射文件的位置。此时会自动加载dao包中所有的映射文件，不需要再一一配置-->
+        <package name="com.csust.web.dao"/>
+    </mappers>
+</configuration>
